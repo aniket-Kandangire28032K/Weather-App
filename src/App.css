@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+  margin: 0;
+}
+body{
+  background-image: url('./assets/images/bg-cover-1.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  
+}
+header h1{
+  font-family: 'Poppins',Tahoma;
+  color: #1f6de2;
+  @apply text-5xl text-center pt-3 font-extrabold
+  select-none
+  
+}
+#weatherBox{
+  
+ display: flex;
+ align-items: center;
+ margin-top: 7em;
+}
+#btn{
+  width: 25%;
+  height: 2.5em;
+  font-weight: 600;
+}
+#weatherBox input:invalid{
+  border-bottom: 3px solid crimson;
+}
+#weatherBox input:valid{
+  border-bottom: 3px solid rgb(17, 207, 29);
+}
+#weatherBox > input{
+  width: 66%;
+  border-bottom: 3px solid rgb(0, 149, 255);
+  outline: 0px solid;
+height: 3rem;
+font-size: 2.6rem;
+color: rgb(0, 0, 0);
+background-color: transparent;
+&::placeholder{
+  color: white;
+  font-size: 2rem;
+}
+}
+#weatherBox button:hover{
+  @apply bg-blue-900
+}
+#weatherBox button:active{
+  @apply bg-blue-950
+}
+#weatherBox button:before{
+  @apply bg-blue-900
+}
+#weatherCard{
+  user-select: none;
+  backdrop-filter: blur(10px);
+  background-color: rgba(38, 38, 38, 0.208);
+  border: 2px solid;
+  transition: 1s;
+  display: grid;
+  grid-auto-columns: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "city city city city"
+    "temp temp icon icon"
+    "temp temp icon icon"
+    "wind wind sky sky"
+    "humidity humidity humidity humidity"
+    ;
+}
+#weatherCard >h1,img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  /* border: 2px solid red; */
+}
+#weatherCard h1:first-child{
+font-size: 2em;
+grid-area: city;
+}
+#weatherCard img{
+  grid-area: icon;
+  justify-content: start;
+  margin-top: 0.5em;
+}
+#weatherCard h1:nth-child(3){
+  font-size: 3em;
+  justify-content: end;
+  grid-area: temp;
+}
+#weatherCard h1:nth-child(4){
+grid-area: wind;
+}
+
+#weatherCard:nth-child(5){
+  grid-area: sky;
+}
+#weatherCard h1:nth-child(6){
+  grid-area: humidity;
+}
+@media only screen and (max-width:800px){
+  body{
+    background-size:cover ;
+    background-position: unset;
+  }
+  header h1{
+    user-select: none;
+    @apply text-3xl text-start
+  }
+  #weatherBox{
+    flex-direction: column; 
+  }
+  #weatherBox >input{
+    font-size: 1.5em;
+    text-wrap: wrap;
+    width: 90%;
+  }
+  #weatherBox > button{
+    width: 70%;
+    @apply m-4 
+  }
+#weatherCard{
+  backdrop-filter: blur(10px);
+  background-color: rgba(38, 38, 38, 0.208);
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(5,auto);
+  row-gap: 0.5em;
+  grid-template-areas: 
+  "city city city city"
+  "temp temp icon icon"
+  "temp temp icon icon"
+  "wind wind sky sky"
+  "humidity humidity humidity humidity"
+  ;
+  
+}  
+#weatherCard h1:first-child{
+  font-size: 2em;
+  color:black;
+  grid-area:city ;
+}
+#weatherCard img{
+  grid-area: icon;
+}
+#weatherCard h1:nth-child(3){
+  color: #fff;
+  font-size: 5em;
+  font-weight: 800;
+  grid-area: temp;
+}
+/* #weatherCard h1:nth-child(4),h1:nth-child(6),h1:nth-child(5){
+  border: 2px solid red;
+} */
+#weatherCard h1:nth-child(4){
+  grid-area: wind;
+}
+#weatherCard h1:nth-child(5){
+  grid-area: sky;
+}
+
+#weatherCard h1:nth-child(6){
+  grid-area: humidity;
+}
+}
